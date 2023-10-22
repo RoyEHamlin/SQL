@@ -16,3 +16,18 @@ FROM orders;
 SELECT occurred_at, account_id, channel
 FROM web_events
 LIMIT 15;
+
+-- Q4a
+SELECT id, occurred_at, total_amt_usd
+FROM orders
+ORDER BY occurred_at
+LIMIT 10;
+
+-- Q4b
+SELECT id, account_id, total_amt_usd
+FROM orders
+ORDER BY total_amt_usd DESC
+LIMIT 5;
+
+
+-- Q4c
