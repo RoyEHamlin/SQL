@@ -1,5 +1,7 @@
 /* Notes */
-
+-- Table names with spaces
+  -- "table name" 
+  -- [table name]
 
 
 -- Question 1
