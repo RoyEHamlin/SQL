@@ -22,12 +22,15 @@ SELECT id, occurred_at, total_amt_usd
 FROM orders
 ORDER BY occurred_at
 LIMIT 10;
-
 -- Q4b
 SELECT id, account_id, total_amt_usd
 FROM orders
 ORDER BY total_amt_usd DESC
 LIMIT 5;
-
-
 -- Q4c
+SELECT id, account_id, total_amt_usd
+FROM orders
+ORDER BY total_amt_usd
+LIMIT 20;
+
+-- Q5
