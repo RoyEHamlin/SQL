@@ -6,8 +6,8 @@
 
 -- Question 1
 SELECT *
-FROM orders
+FROM orders;
 
 -- Question 2
 SELECT id, account_id, occurred_at
-FROM orders
+FROM orders;
