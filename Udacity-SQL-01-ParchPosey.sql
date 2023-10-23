@@ -39,5 +39,11 @@ SELECT id, account_id, total_amt_usd
 FROM orders
 ORDER BY account_id, total_amt_usd DESC;
 -- Q5b
+SELECT id, account_id, total_amt_usd
+FROM orders
+ORDER BY total_amt_usd DESC, account_id;
+
+-- 6
+
 
 
