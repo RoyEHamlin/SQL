@@ -69,3 +69,13 @@ LIMIT 10;
 SELECT (poster_amt_usd/(standard_amt_usd+gloss_amt_usd+poster_amt_usd))*100 AS perc_poster, id, account_id
 FROM orders
 LIMIT 10;
+
+
+-- 9 :: Introduction to Logical Operators
+/*
+LIKE :: This allows you to perform operations similar to using WHERE and =, but for cases when you might not know exactly what you are looking for.
+IN :: This allows you to perform operations similar to using WHERE and =, but for more than one condition.
+NOT :: This is used with IN and LIKE to select all of the rows NOT LIKE or NOT IN a certain condition.
+AND & BETWEEN :: These allow you to combine operations where all combined conditions must be true.
+OR :: This allows you to combine operations where at least one of the combined conditions must be true.
+*/
