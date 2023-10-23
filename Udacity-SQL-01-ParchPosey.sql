@@ -56,8 +56,16 @@ WHERE gloss_amt_usd < 1000
 LIMIT 10;
 
 
--- 7
+-- 7 :: WHERE with Non-Numeric
 SELECT name, website, primary_poc
 FROM accounts
 WHERE name = 'Exxon Mobil';
 
+-- 8a :: Arithmetic Operators
+SELECT standard_amt_usd/standard_qty AS unit_price_per_order, id, account_id
+FROM orders
+LIMIT 10;
+-- 8b :: Arithmetic Operators
+SELECT (poster_amt_usd/(standard_amt_usd+gloss_amt_usd+poster_amt_usd))*100 AS perc_poster, id, account_id
+FROM orders
+LIMIT 10;
