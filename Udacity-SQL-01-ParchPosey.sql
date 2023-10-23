@@ -43,7 +43,18 @@ SELECT id, account_id, total_amt_usd
 FROM orders
 ORDER BY total_amt_usd DESC, account_id;
 
--- 6
+
+-- 6a
+SELECT *
+FROM orders
+WHERE gloss_amt_usd >= 1000
+LIMIT 5;
+-- 6b
+SELECT *
+FROM orders
+WHERE gloss_amt_usd < 1000
+LIMIT 10;
+
 
 
 
