@@ -56,5 +56,8 @@ WHERE gloss_amt_usd < 1000
 LIMIT 10;
 
 
-
+-- 7
+SELECT name, website, primary_poc
+FROM accounts
+WHERE name = 'Exxon Mobil';
 
