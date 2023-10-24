@@ -92,7 +92,7 @@ WHERE name LIKE 'C%';
 -- 10b. :: LIKE
 SELECT name
 FROM accounts
-WHERE name LIKE 'C%';
+WHERE name LIKE '%one%';
 -- 10c. :: LIKE
 SELECT name
 FROM accounts
@@ -109,4 +109,23 @@ WHERE channel IN ('organic', 'adwords');
 
 
 
--- 11a :: IN
+-- 11a :: NOT LIKE and NOT IN
+SELECT name, primary_poc, sales_rep_id
+FROM accounts
+WHERE name NOT IN ('Walmart', 'Target', 'Nordstrom');
+-- 11b :: NOT LIKE and NOT IN
+SELECT *
+FROM web_events
+WHERE channel NOT IN ('organic', 'adwords');
+-- 11c. :: NOT
+SELECT name
+FROM accounts
+WHERE name NOT LIKE 'C%';
+-- 11d. :: NOT
+SELECT name
+FROM accounts
+WHERE name NOT LIKE '%one%';
+-- 11e. :: NOT
+SELECT name
+FROM accounts
+WHERE name NOT LIKE '%s';
