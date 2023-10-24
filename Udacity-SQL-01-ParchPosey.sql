@@ -73,9 +73,25 @@ LIMIT 10;
 
 -- 9 :: Introduction to Logical Operators
 /*
-LIKE :: This allows you to perform operations similar to using WHERE and =, but for cases when you might not know exactly what you are looking for.
-IN :: This allows you to perform operations similar to using WHERE and =, but for more than one condition.
-NOT :: This is used with IN and LIKE to select all of the rows NOT LIKE or NOT IN a certain condition.
-AND & BETWEEN :: These allow you to combine operations where all combined conditions must be true.
-OR :: This allows you to combine operations where at least one of the combined conditions must be true.
+WHERE
+  LIKE :: This allows you to perform operations similar to using WHERE and =, but for cases when you might not know exactly what you are looking for.
+    % :: wildcard
+  IN :: This allows you to perform operations similar to using WHERE and =, but for more than one condition.
+    NOT :: This is used with IN and LIKE to select all of the rows NOT LIKE or NOT IN a certain condition.
+  AND & BETWEEN :: These allow you to combine operations where all combined conditions must be true.
+  OR :: This allows you to combine operations where at least one of the combined conditions must be true.
 */
+
+-- 10a. :: LIKE
+SELECT name
+FROM accounts
+WHERE name LIKE 'C%';
+-- 10b. :: LIKE
+SELECT name
+FROM accounts
+WHERE name LIKE 'C%';
+-- 10c. :: LIKE
+SELECT name
+FROM accounts
+WHERE name LIKE '%s';
+
