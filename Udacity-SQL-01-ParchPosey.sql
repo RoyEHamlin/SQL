@@ -1,133 +1,42 @@
-/* Notes */
--- Table names with spaces
-  -- "table name" 
-  -- [table name]
 
-
--- Question 1
-SELECT *
-FROM orders;
-
--- Question 2
-SELECT id, account_id, occurred_at
-FROM orders;
-
--- Q 3
-SELECT occurred_at, account_id, channel
-FROM web_events
-LIMIT 15;
-
--- Q4a
-SELECT id, occurred_at, total_amt_usd
-FROM orders
-ORDER BY occurred_at
-LIMIT 10;
--- Q4b
-SELECT id, account_id, total_amt_usd
-FROM orders
-ORDER BY total_amt_usd DESC
-LIMIT 5;
--- Q4c
-SELECT id, account_id, total_amt_usd
-FROM orders
-ORDER BY total_amt_usd
-LIMIT 20;
-
-
--- Q5a
-SELECT id, account_id, total_amt_usd
-FROM orders
-ORDER BY account_id, total_amt_usd DESC;
--- Q5b
-SELECT id, account_id, total_amt_usd
-FROM orders
-ORDER BY total_amt_usd DESC, account_id;
-
-
--- 6a
+-- 12a. :: AND and BETWEEN
 SELECT *
 FROM orders
-WHERE gloss_amt_usd >= 1000
-LIMIT 5;
--- 6b
-SELECT *
-FROM orders
-WHERE gloss_amt_usd < 1000
-LIMIT 10;
-
-
--- 7 :: WHERE with Non-Numeric
-SELECT name, website, primary_poc
-FROM accounts
-WHERE name = 'Exxon Mobil';
-
--- 8a :: Arithmetic Operators
-SELECT standard_amt_usd/standard_qty AS unit_price_per_order, id, account_id
-FROM orders
-LIMIT 10;
--- 8b :: Arithmetic Operators
-SELECT (poster_amt_usd/(standard_amt_usd+gloss_amt_usd+poster_amt_usd))*100 AS perc_poster, id, account_id
-FROM orders
-LIMIT 10;
-
-
--- 9 :: Introduction to Logical Operators
-/*
-WHERE
-  LIKE :: This allows you to perform operations similar to using WHERE and =, but for cases when you might not know exactly what you are looking for.
-    % :: wildcard
-  IN :: This allows you to perform operations similar to using WHERE and =, but for more than one condition.
-    single operator :: WHERE account_id 
-    Text ::      WHERE account_id IN ('text1', 'text2')
-    Integers ::  WHERE account_id IN (1001, 1021) 
-    NOT :: This is used with IN and LIKE to select all of the rows NOT LIKE or NOT IN a certain condition.
-  AND & BETWEEN :: These allow you to combine operations where all combined conditions must be true.
-  OR :: This allows you to combine operations where at least one of the combined conditions must be true.
-*/
-
--- 10a. :: LIKE
+WHERE standard_qty > 1000 AND poster_qty = 0 AND gloss_qty = 0;
+-- 12b. :: AND and BETWEEN
 SELECT name
 FROM accounts
-WHERE name LIKE 'C%';
--- 10b. :: LIKE
-SELECT name
-FROM accounts
-WHERE name LIKE '%one%';
--- 10c. :: LIKE
-SELECT name
-FROM accounts
-WHERE name LIKE '%s';
-
--- 11a. :: IN
-SELECT name, primary_poc, sales_rep_id
-FROM accounts
-WHERE name IN ('Walmart', 'Target', 'Nordstrom');
--- 11b. :: IN
+WHERE name NOT LIKE 'C%' AND name LIKE '%s';
+-- 12c. :: AND and BETWEEN
+SELECT occurred_at, gloss_qty
+FROM orders
+WHERE gloss_qty BETWEEN 24 AND 29
+ORDER BY gloss_qty;
+	-- Yes, BETWEEN is inclusive
+-- 12c. :: AND and BETWEEN
 SELECT *
 FROM web_events
-WHERE channel IN ('organic', 'adwords');
-
-
-
--- 11a :: NOT LIKE and NOT IN
-SELECT name, primary_poc, sales_rep_id
-FROM accounts
-WHERE name NOT IN ('Walmart', 'Target', 'Nordstrom');
--- 11b :: NOT LIKE and NOT IN
+WHERE (channel = 'organic' OR channel = 'adwords') AND
+	occurred_at >= '2016-01-01'
+ORDER BY occurred_at DESC;
+	-- alt
 SELECT *
 FROM web_events
-WHERE channel NOT IN ('organic', 'adwords');
--- 11c. :: NOT
-SELECT name
-FROM accounts
-WHERE name NOT LIKE 'C%';
--- 11d. :: NOT
-SELECT name
-FROM accounts
-WHERE name NOT LIKE '%one%';
--- 11e. :: NOT
-SELECT name
-FROM accounts
-WHERE name NOT LIKE '%s';
+WHERE channel IN ('organic', 'adwords') AND occurred_at BETWEEN '2016-01-01' AND '2017-01-01'
+ORDER BY occurred_at DESC;
 
--- 12a. :: 
+-- 13a. :: OR
+SELECT id
+FROM orders
+WHERE gloss_qty > 4000 OR poster_qty > 4000;
+-- 13b. :: OR
+SELECT *
+FROM orders
+WHERE standard_qty = 0 AND (gloss_qty > 1000 OR poster_qty > 1000);
+-- 13c. :: OR
+SELECT *
+FROM accounts
+WHERE (name LIKE 'C%' OR name LIKE 'W%') 
+              AND ((primary_poc LIKE '%ana%' OR primary_poc LIKE '%Ana%') 
+              AND primary_poc NOT LIKE '%eana%');
+
