@@ -41,5 +41,42 @@ WHERE (name LIKE 'C%' OR name LIKE 'W%')
               AND primary_poc NOT LIKE '%eana%');
 
 
+/*====================== Join ==========================*/
+SELECT orders.*,
+	   accounts.*
+FROM demo.orders
+JOIN demo.accounts
+	ON orders.account_id = accounts.id;
 
+SELECT orders.*
+FROM orders
+JOIN accounts
+ON orders.account_id = accounts.id;
 
+SELECT accounts.name, orders.occurred_at
+FROM orders
+JOIN accounts
+ON orders.account_id = accounts.id;
+
+SELECT *
+FROM orders
+JOIN accounts
+ON orders.account_id = accounts.id;
+
+SELECT orders.*
+FROM orders
+JOIN accounts
+ON orders.account_id = accounts.id;
+
+-- 1a :: Join
+SELECT orders.*, accounts.*
+FROM accounts
+JOIN orders
+ON accounts.id = orders.account_id;
+-- 1b :: Join
+SELECT orders.standard_qty, orders.gloss_qty, 
+          orders.poster_qty,  accounts.website, 
+          accounts.primary_poc
+FROM orders
+JOIN accounts
+ON orders.account_id = accounts.id
