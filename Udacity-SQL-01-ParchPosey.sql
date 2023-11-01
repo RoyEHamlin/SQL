@@ -140,3 +140,5 @@ Provide a table for all web_events associated with account name of Walmart. Ther
 	ON o.account_id = a.id;
 
 ---------- Motivation for Other JOINs
+
+--
