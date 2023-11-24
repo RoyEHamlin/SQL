@@ -142,3 +142,5 @@ Provide a table for all web_events associated with account name of Walmart. Ther
 ---------- Motivation for Other JOINs
 
 --
+
+---
